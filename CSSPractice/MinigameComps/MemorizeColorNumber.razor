@@ -1,0 +1,46 @@
+﻿
+<h2 id="game-title">REmember the colours and the numbers</h2>
+
+
+<div>
+    <button class="memorizeelement" style=background-color:@firstcolor>@firstnumber</button>
+    <button class="memorizeelement" style=background-color:@secondcolor>@secondnumber</button>
+    <button class="memorizeelement" style=background-color:@thirdcolor>@thirdnumber</button>
+</div>
+
+
+@code {
+
+    bool picked = false;
+    string firstcolor = "blue";
+    string secondcolor = "blue";
+    string thirdcolor = "blue";
+    int firstnumber = 1;
+    int secondnumber = 2;
+    int thirdnumber = 3;
+    string[] colors = new string[4] { "blue", "red", "green", "yellow"};
+
+    void PickColorNums()
+    {
+
+
+        Random rnd = new Random();
+        if (!picked)
+        {
+            firstcolor = colors[rnd.Next(0,4)];
+            secondcolor = colors[rnd.Next(0,4)];
+            thirdcolor = colors[rnd.Next(0,4)];
+            firstnumber = rnd.Next(0,9);
+            secondnumber = rnd.Next(0,9);
+            thirdnumber = rnd.Next(0,9);
+            picked = true;
+        }
+    }
+    //this is the onload overridded method
+    //you can do some kind of wait stuff idk but it works for now
+    protected override async Task OnInitializedAsync()
+    {
+        PickColorNums();
+    }
+
+}

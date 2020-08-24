@@ -1,0 +1,50 @@
+﻿
+
+.playergame {
+    
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:auto;
+    margin-bottom:auto;
+
+}
+
+player1window {
+    position: absolute;
+    width: 49.5%;
+    height: 49%;
+    left: 2px;
+    top: 2px;
+    border: 2px solid grey;
+    cursor: url(/media/bcurs.png) -2 -2,auto;
+}
+
+player2window {
+    position: absolute;
+    width: 49.5%;
+    height: 49%;
+    right: 2px;
+    top: 2px;
+    border: 2px solid grey;
+    cursor: url(/media/rcurs.png) -2 -2,auto;
+}
+
+player3window {
+    position: absolute;
+    width: 49.5%;
+    height: 49%;
+    left: 2px;
+    bottom: 2px;
+    border: 2px solid grey;
+    cursor: url(/media/gcurs.png) -2 -2,auto;
+}
+player4window {
+    position: absolute;
+    width: 49.5%;
+    height: 49%;
+    right: 2px;
+    bottom: 2px;
+    border: 2px solid grey;
+    cursor: url(/media/ycurs.png) -2 -2,auto;
+}

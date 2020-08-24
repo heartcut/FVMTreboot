@@ -1,0 +1,57 @@
+﻿<div class="mainwindow">
+    <div class="gamewindow">
+        @if (choosegame == 0)
+        {
+            <TeamNumberGame/>
+        }
+        @if(choosegame!=0)
+        { 
+        <player1window>
+            <div class="playergame">
+                <!--lmao i love it-->
+                @if (choosegame == 1)
+                {
+                    <SixNineGame />
+                }
+                @if (choosegame == 2)
+                {
+                    <MakeSquare />
+                }
+                @if (choosegame == 3)
+                {
+                    <MemorizeColorNumber/>
+                }
+            </div>
+        </player1window>
+        <player2window>
+            <div class="playergame">game here</div>
+        </player2window>
+        <player3window>
+            <div class="playergame">game here</div>
+        </player3window>
+        <player4window>
+            <div class="playergame">game here</div>
+        </player4window>
+        }
+    </div>
+    <div class="testbuttons">
+        <button @onclick="(() => ChooseAGame(0))">team play?</button>
+        <button @onclick="(() => ChooseAGame(1))">sixninegame?</button>
+        <button @onclick="(() => ChooseAGame(2))">makeasuqre?</button>
+        <button @onclick="(() => ChooseAGame(3))">mem colornum</button>
+    </div>
+    <div class="names">
+        <div class="name1">Jesse</div>
+        <div class="name2">Jared</div>
+        <div class="name3">Cody</div>
+        <div class="name4">Matthew</div>
+    </div>
+    <div class="timer"><strong>66:66</strong></div>
+</div>
+@code{
+    int choosegame = 1;
+    void ChooseAGame(int a)
+    {
+        choosegame = a;
+    }
+}

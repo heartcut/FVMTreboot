@@ -1,0 +1,67 @@
+﻿
+<h2 id="game-title">click the shapes to make a square</h2>
+<br />
+<div>
+    <div class="arrow-up" id="@uprot"></div>
+    <div class="arrow-down" id="@downrot"></div>
+    <div class="arrow-left" id="@leftrot"></div>
+    <div class="arrow-right" id="@rightrot"></div>
+</div>
+<div id="colorbuttons"class="botofgame">
+    <a class="colorbutton1" @onclick="()=>SquareRotate(0)">Rotate</a>
+    <a class="colorbutton2" @onclick="()=>SquareRotate(1)">Rotate</a>
+    <a class="colorbutton3" @onclick="()=>SquareRotate(2)">Rotate</a>
+    <a class="colorbutton4" @onclick="()=>SquareRotate(3)">Rotate</a>
+</div>
+
+
+@code {
+    string uprot = "rotatezero";
+    string downrot = "rotatezero";
+    string leftrot = "rotatezero";
+    string rightrot = "rotatezero";
+    string NextPosition(string a)
+    {
+        if (a == "rotatezero")
+        {
+            return "rotateninty";
+        }
+        else if (a == "rotateninty")
+        {
+            return "rotateoneeighty";
+        }
+        else if (a == "rotateoneeighty")
+        {
+            return "rotatetwoseventy";
+        }
+        else if (a == "rotatetwoseventy")
+        {
+            return "rotatezero";
+        }
+        return "rotateoneeighty";
+    }
+    void SquareRotate(int a)
+    {
+        if (a == 0)
+        {
+            uprot = NextPosition(uprot);
+        }
+        if (a == 1)
+        {
+            downrot = NextPosition(downrot);
+        }
+        if (a == 2)
+        {
+            leftrot = NextPosition(leftrot);
+        }
+        if (a == 3)
+        {
+            rightrot = NextPosition(rightrot);
+        }
+    }
+    //this is the onload overridded method
+    //you can do some kind of wait stuff idk but it works for now
+    protected override async Task OnInitializedAsync()
+    {
+    }
+}
