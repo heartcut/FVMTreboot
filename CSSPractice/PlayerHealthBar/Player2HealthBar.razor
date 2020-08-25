@@ -1,0 +1,28 @@
+﻿
+@for (int i = 0; i < 12; i++)
+{
+    if (i < player2hp)
+    {
+        <healthbubblealivep2>o</healthbubblealivep2>
+    }
+    else
+    {
+        <healthbubledead>o</healthbubledead>
+    }
+}
+
+@code {
+
+    public static int player2hp = 7;
+
+    public void HealthMinus()
+    {
+        player2hp--;
+        StateHasChanged();
+    }
+    public void HealthPlus()
+    {
+        player2hp++;
+        StateHasChanged();
+    }
+}

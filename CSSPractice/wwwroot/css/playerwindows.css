@@ -7,7 +7,7 @@
     margin-right: auto;
     margin-top:auto;
     margin-bottom:auto;
-
+    color:white;
 }
 
 player1window {
@@ -28,6 +28,7 @@ player2window {
     top: 2px;
     border: 2px solid grey;
     cursor: url(/media/rcurs.png) -2 -2,auto;
+    color:white;
 }
 
 player3window {
@@ -47,4 +48,28 @@ player4window {
     bottom: 2px;
     border: 2px solid grey;
     cursor: url(/media/ycurs.png) -2 -2,auto;
+}
+
+
+.player1health{
+
+    position:absolute;
+    bottom:3px;
+    left:40%;
+    color:white;
+}
+healthbubbledead{
+    color:white;
+}
+healthbubblealivep1{
+    color:blue;
+}
+healthbubblealivep2 {
+    color: red;
+}
+healthbubblealivep3 {
+    color: green;
+}
+healthbubblealivep4 {
+    color: yellow;
 }

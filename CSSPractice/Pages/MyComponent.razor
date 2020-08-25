@@ -2,36 +2,57 @@
     <div class="gamewindow">
         @if (choosegame == 0)
         {
-            <TeamNumberGame/>
+            <TeamNumberGame />
         }
-        @if(choosegame!=0)
-        { 
-        <player1window>
-            <div class="playergame">
-                <!--lmao i love it-->
-                @if (choosegame == 1)
-                {
-                    <SixNineGame />
-                }
-                @if (choosegame == 2)
-                {
-                    <MakeSquare />
-                }
-                @if (choosegame == 3)
-                {
-                    <MemorizeColorNumber/>
-                }
-            </div>
-        </player1window>
-        <player2window>
-            <div class="playergame">game here</div>
-        </player2window>
-        <player3window>
-            <div class="playergame">game here</div>
-        </player3window>
-        <player4window>
-            <div class="playergame">game here</div>
-        </player4window>
+        @if (choosegame != 0)
+        {
+            <player1window>
+                <div class="playergame">
+                    <!--lmao i love it-->
+                    @if (choosegame == 1)
+                    {
+                        <SixNineGame />
+                    }
+                    @if (choosegame == 2)
+                    {
+                        <MakeSquare />
+                    }
+                    @if (choosegame == 3)
+                    {
+                        <MemorizeColorNumber />
+                    }
+                </div>
+                <div class="player1health">
+                    <!--i use the at ref to reference my other component to communicate acrros them-->
+                    <!--yea not too sure how it works yet but hey-->
+                    <Player1HealthBar @ref="p1hp"/>
+
+                </div>
+            </player1window>
+            <player2window>
+                <div class="playergame">???????????????</div>
+                <button @onclick="(()=>p2hp.HealthMinus())">lose health</button>
+                <button @onclick="(()=>p2hp.HealthPlus())">gain health</button>
+                <div class="player1health">
+                    <Player2HealthBar @ref="p2hp" />
+                </div>
+            </player2window>
+            <player3window>
+                <div class="playergame">game here</div>
+                <button @onclick="(()=>p3hp.HealthMinus())">lose health</button>
+                <button @onclick="(()=>p3hp.HealthPlus())">gain health</button>
+                <div class="player1health">
+                    <Player3HealthBar @ref="p3hp" />
+                </div>
+            </player3window>
+            <player4window>
+                <div class="playergame">game here</div>
+                <button @onclick="(()=>p4hp.HealthMinus())">lose health</button>
+                <button @onclick="(()=>p4hp.HealthPlus())">gain health</button>
+                <div class="player1health">
+                    <Player4HealthBar @ref="p4hp" />
+                </div>
+            </player4window>
         }
     </div>
     <div class="testbuttons">
@@ -39,6 +60,9 @@
         <button @onclick="(() => ChooseAGame(1))">sixninegame?</button>
         <button @onclick="(() => ChooseAGame(2))">makeasuqre?</button>
         <button @onclick="(() => ChooseAGame(3))">mem colornum</button>
+
+
+
     </div>
     <div class="names">
         <div class="name1">Jesse</div>
@@ -46,12 +70,42 @@
         <div class="name3">Cody</div>
         <div class="name4">Matthew</div>
     </div>
-    <div class="timer"><strong>66:66</strong></div>
+    <div class="timer"><strong>@stopwatchvalue</strong></div>
 </div>
 @code{
+    //i create some kind of object or connection to my other compnent with this
+    Player1HealthBar p1hp;
+    Player2HealthBar p2hp;
+    Player3HealthBar p3hp;
+    Player4HealthBar p4hp;
+    
+
     int choosegame = 1;
     void ChooseAGame(int a)
     {
         choosegame = a;
     }
+
+    TimeSpan stopwatchvalue = new TimeSpan();
+    bool is_stopwatchrunning = false;
+
+    async Task StopWatch()
+    {
+        is_stopwatchrunning = true;
+        while(is_stopwatchrunning)
+        {
+            await Task.Delay(1000);
+            if(is_stopwatchrunning)
+            {
+                stopwatchvalue = stopwatchvalue.Add(new TimeSpan(0, 0, 1));
+                StateHasChanged();
+            }
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        StopWatch();
+    }
+
 }

@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="PlayerHealthBar\Player1HealthBar - Copy.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\Media\bcurs.png" />
   </ItemGroup>
 
